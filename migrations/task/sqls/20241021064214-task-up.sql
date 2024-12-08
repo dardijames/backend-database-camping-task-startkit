@@ -108,7 +108,7 @@ VALUES
    (SELECT id FROM "SKILL" WHERE name = '重訓'));
 
     -- 2. 教練`肌肉棒子` 需要有 `瑜伽` 專長
-    ANS: INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id) VALUES
+    INSERT INTO "COACH_LINK_SKILL" (coach_id, skill_id) VALUES
   ((SELECT id FROM "COACH" WHERE user_id = (SELECT id FROM "USER" WHERE email = 'muscle@hexschooltest.io')),
    (SELECT id FROM "SKILL" WHERE name = '瑜伽'));
     -- 3. 教練`Q太郎` 需要有 `有氧運動` 與 `復健訓練` 專長
