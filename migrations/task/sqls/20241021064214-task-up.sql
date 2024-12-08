@@ -322,13 +322,12 @@ GROUP BY
 -- 顯示須包含以下欄位： 總營收
 
 SELECT 
-  COUNT(DISTINCT "COURSE_BOOKING".user_id) AS "預約會員人數"
+  SUM("CREDIT_PURCHASE".price_paid) AS "總營收"
 FROM 
-  "COURSE_BOOKING"
+  "CREDIT_PURCHASE"
 WHERE 
-  "COURSE_BOOKING".created_at >= '2024-11-01 00:00:00' 
-  AND "COURSE_BOOKING".created_at <= '2024-11-30 23:59:59'
-  AND "COURSE_BOOKING".status != '課程已取消';
+  "CREDIT_PURCHASE".purchase_at >= '2024-11-01 00:00:00'
+  AND "CREDIT_PURCHASE".purchase_at <= '2024-11-30 23:59:59';
 
 -- 6-5. 查詢：計算 11 月份有預約課程的會員人數（需使用 Distinct，並用 created_at 和 status 欄位統計）
 -- 顯示須包含以下欄位： 預約會員人數
@@ -338,6 +337,6 @@ SELECT
 FROM 
   "COURSE_BOOKING"
 WHERE 
-  "COURSE_BOOKING".created_at >= '2024-11-01 00:00:00' 
+  "COURSE_BOOKING".created_at >= '2024-11-01 00:00:00'
   AND "COURSE_BOOKING".created_at <= '2024-11-30 23:59:59'
   AND "COURSE_BOOKING".status != '課程已取消';
